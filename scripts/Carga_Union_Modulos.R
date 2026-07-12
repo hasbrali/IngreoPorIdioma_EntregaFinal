@@ -32,3 +32,11 @@ enaho_total <- mod500 %>%
   left_join(mod300, by = keys) %>%
   # Sumaria no tiene 'codperso', intersect() seleccionará automáticamente las 8 llaves del hogar
   left_join(sumaria, by = intersect(names(.), names(sumaria)))
+#Verificacion de filas
+nrow(enaho_total) == nrow(sumaria)
+
+#4. Exportacion de base de datos creada-----------------------------------------
+install.packages("arrow")
+library(arrow)
+renv::snapshot()
+write_parquet(enaho_total, "Datos/procesados/enaho_total_2024_050726.parquet")
