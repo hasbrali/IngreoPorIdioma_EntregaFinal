@@ -5,3 +5,10 @@
 .httr-oauth
 .DS_Store
 .quarto
+Datos/Crudos/*.dta
+*.dta
+*.csv
+*.xlsx
+*.xls
+*.sav
+*.sas7bdat
