@@ -40,3 +40,19 @@ base_acondicionada <- base_unida %>%
     nivel_edu     = p301a,         # Nivel educativo alcanzado
     sector_empleo = p510           # Sector de empleo institucional
   )
+
+#3. Diagnóstico y Reporte de Datos Perdidos (NAs)-------------------------------
+
+#Reporte Gráfico de NAs
+grafico_nas_jefes <- gg_miss_var(base_acondicionada, show_pct = TRUE) +
+  labs(
+    title = "Porcentaje de Valores Perdidos (NAs) por Variable",
+    subtitle = "Diagnóstico analítico con variables renombradas (2024)",
+    y = "% de Datos Perdidos",
+    x = "Variables del Proyecto"
+  ) +
+  theme_minimal()
+# Guardamos el gráfico
+ggsave("outputs/Grafico_NAs_Jefes.png", plot = grafico_nas_jefes, 
+       width = 8, height = 6, bg = "white")
+
