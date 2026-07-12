@@ -56,3 +56,9 @@ grafico_nas_jefes <- gg_miss_var(base_acondicionada, show_pct = TRUE) +
 ggsave("outputs/Grafico_NAs_Jefes.png", plot = grafico_nas_jefes, 
        width = 8, height = 6, bg = "white")
 
+#4. Filtrado Muestral Estricto y Exportación Final------------------------------
+#Conservamos solo jefes de hogar (código 1), mayores de 14 años y con ingresos mayores a cero.
+jefes_filtrada <- base_acondicionada %>%
+  filter(jefe_familia == 1, !is.na(ingreso_bruto), ingreso_bruto > 0, edad >= 14)
+
+write_parquet(jefes_filtrada, "Datos/procesados/enaho_jefes_acondicionada.parquet")

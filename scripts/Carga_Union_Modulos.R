@@ -41,9 +41,3 @@ library(arrow)
 renv::snapshot()
 write_parquet(enaho_total, "Datos/procesados/enaho_total_2024_050726.parquet")
 
-#4. Filtrado Muestral Estricto y Exportación Final------------------------------
-#Conservamos solo jefes de hogar (código 1), mayores de 14 años y con ingresos mayores a cero.
-jefes_filtrada <- base_acondicionada %>%
-  filter(jefe_familia == 1, !is.na(ingreso_bruto), ingreso_bruto > 0, edad >= 14)
-
-write_parquet(jefes_filtrada, "Datos/procesados/enaho_jefes_acondicionada.parquet")
