@@ -133,3 +133,6 @@ ggsave("outputs/Grafico_Bivariado_Barras.png", plot = grafico_bi_barras, width =
 
 #MEMO 6 Exploración
 "* Evidencia de Desigualdad: El gráfico Grafico_Bivariado_Barras muestra las marcadas brechas salariales en el Perú, posicionando a las jefaturas de habla castellana con los retornos promedio más altos (superando los 34,800 soles), seguidas por las poblaciones aymara y quechua, mientras que las otras lenguas nativas registran el menor promedio de ingresos"
+
+# 4. EXPORTACIÓN DE LA NUEVA BASE DE DATOS ACTUALIZADA
+write_parquet(jefes_explora, "Datos/procesados/enaho_jefes_exploratoria.parquet")
