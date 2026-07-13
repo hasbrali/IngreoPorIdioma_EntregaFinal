@@ -114,3 +114,22 @@ write_csv(bivariado_educ_idioma, "outputs/Tabla_Bivariado_Cruce_Educacion.csv")
 * Brecha en Educación Superior: Los resultados demuestran una marcada asimetría en el acceso a instrucción técnica o universitaria, donde el grupo hispanohablante triplica la proporción de educación superior en comparación con las jefaturas quechuahablantes y duplica a las de habla aymara.
 * Formateo Relativo: Se utilizaron las funciones de janitor para estimar porcentajes normalizados por fila (row percentages) conservando de forma adyacente las frecuencias absolutas de la muestra, exportando de manera automatizada el archivo Tabla_Bivariado_Cruce_Educacion."
 
+
+# 3.5 Gráfico Bivariado: Barras de Ingreso Promedio según Idioma Materno
+grafico_bi_barras <- ggplot(bivariado_idioma_ingreso, aes(x = idioma_factor, y = Ingreso_Promedio, fill = idioma_factor)) +
+  geom_col(color = "black", width = 0.5, show.legend = FALSE) +
+  geom_text(aes(label = paste("S/.", format(Ingreso_Promedio, big.mark=","))), vjust = -0.5, fontface = "bold") +
+  labs(
+    title = "Ingreso Promedio Mensual por Lengua Materna del Jefe de Familia",
+    subtitle = "PC4: Brechas de ingresos según adscripción lingüística (2024)",
+    x = "Lengua Materna",
+    y = "Ingreso Promedio (Soles)",
+    caption = "Fuente: ENAHO 2024 - Instituto Nacional de Estadística e Informática"
+  ) +
+  scale_y_continuous(labels = dollar_format(prefix = "S/. "), limits = c(0, max(bivariado_idioma_ingreso$Ingreso_Promedio) * 1.15)) +
+  theme_minimal()
+
+ggsave("outputs/Grafico_Bivariado_Barras.png", plot = grafico_bi_barras, width = 9, height = 6, bg = "white")
+
+#MEMO 6 Exploración
+"* Evidencia de Desigualdad: El gráfico Grafico_Bivariado_Barras muestra las marcadas brechas salariales en el Perú, posicionando a las jefaturas de habla castellana con los retornos promedio más altos (superando los 34,800 soles), seguidas por las poblaciones aymara y quechua, mientras que las otras lenguas nativas registran el menor promedio de ingresos"
