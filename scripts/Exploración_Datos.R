@@ -8,6 +8,7 @@
 library(tidyverse)
 library(arrow)
 library(scales)
+library (usethis)
 #Base acondicionada
 jefes_acondicionada <- read_parquet("Datos/procesados/enaho_jefes_acondicionada.parquet")
 
@@ -63,4 +64,11 @@ write_csv(bivariado_idioma_ingreso, "outputs/Tabla_Bivariado_Idioma_Ingreso.csv"
 #MEMO 2 EXPLORACIÓN
 "* Evidencia del Sesgo Distribucional: Se calculó la asimetría en todas las categorías, demostrando una brecha persistente donde los ingresos promedio superan sustancialmente a las medianas debido a la concentración de valores extremadamente altos.
 * Jerarquización de Ingresos: El reporte confirma que las jefaturas de hogar de habla castellana lideran los ingresos (promedio superior a 34,800 soles), seguidas por las poblaciones aymara y quechua, mientras que el grupo de otras lenguas nativas registra la situación económica más baja de la muestra.
-* Consistencia Muestral: Se documentó la distribución del volumen de jefaturas por adscripción, registrando un volumen minoritario de casos no especificados (NA) que, sin embargo, replican comportamientos de altos ingresos.""
+* Consistencia Muestral: Se documentó la distribución del volumen de jefaturas por adscripción, registrando un volumen minoritario de casos no especificados (NA) que, sin embargo, replican comportamientos de altos ingresos."
+
+# Añadir el archivo a Git
+
+usethis::use_git("outputs/Tabla_Bivariado_Idioma_Ingreso.csv")
+
+#Subir a GitHub
+usethis::git_push()
