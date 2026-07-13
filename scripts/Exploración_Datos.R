@@ -86,3 +86,14 @@ ggsave("outputs/Grafico_Univariado_Ingreso.png", plot = grafico_uni_ingreso, wid
 * Identificación de Concentraciones: El gráfico Grafico_Univariado_Ingreso evidencia que la mayor frecuencia de hogares se agrupa sólidamente en torno a los rangos intermedios de la distribución monetaria (cercanos al umbral de las decenas de miles).
 * FormatO: Se parametrizó el etiquetado estético con símbolos de la moneda nacional (S/.) y se exportó la gráfica final dentro del directorio de outputs del proyecto."
 
+#3.3 Tabla de distribución de jefes por idioma materno--------------------------
+univariado_idioma <- jefes_explora %>%
+  count(idioma_factor, name = "frecuencia_absoluta") %>%
+  mutate(porcentaje = round((frecuencia_absoluta / sum(frecuencia_absoluta)) * 100, 2))
+
+write_csv(univariado_idioma, "outputs/Tabla_Univariado_Idioma.csv")
+
+#MEMO 4 EXPLORACIÓN
+"* Estructura Predominante: La tabla Tabla_Univariado_Idioma evidencia que la gran mayoría de las jefaturas de hogar tienen como lengua materna el Castellano (71.89%, superando las 24,000 jefaturas).
+* Participación de Lenguas Indígenas: El Quechua se posiciona como la segunda categoría de mayor peso muestral con el 22.83% (7,672 jefes), seguida por el Aymara con el 3.36% (1,129 jefes) y el conjunto de Otras Lenguas Nativas con un 1.67% (560 jefes).
+* Calidad y Consistencia: Se registra una mínima proporción marginal de valores no especificados o perdidos (NA = 0.25%, 83 observaciones), confirmando la solidez de la muestra para el análisis de brechas."
