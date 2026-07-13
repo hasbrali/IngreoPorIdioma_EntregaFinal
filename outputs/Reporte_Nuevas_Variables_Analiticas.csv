@@ -1,0 +1,5 @@
+Variable_Nueva,Variable_Origen,Sustento_Sociologico
+d_lengua_indigena,p300a (lengua_materna),Mide la adscripción a identidades lingüísticas históricamente discriminadas.
+d_jefa_mujer,p207 (sexo),Permite analizar la penalidad económica o vulnerabilidad en hogares con jefatura femenina.
+d_educ_superior,p301a (nivel_edu),Captura el umbral de acumulación de capital humano altamente valorado en el mercado laboral.
+ln_ingreso_bruto,ingmo1hd (ingreso_bruto),Normaliza la distribución del ingreso eliminando el sesgo por valores atípicos extremos.
