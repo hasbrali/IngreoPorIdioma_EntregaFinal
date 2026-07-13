@@ -97,3 +97,20 @@ write_csv(univariado_idioma, "outputs/Tabla_Univariado_Idioma.csv")
 "* Estructura Predominante: La tabla Tabla_Univariado_Idioma evidencia que la gran mayoría de las jefaturas de hogar tienen como lengua materna el Castellano (71.89%, superando las 24,000 jefaturas).
 * Participación de Lenguas Indígenas: El Quechua se posiciona como la segunda categoría de mayor peso muestral con el 22.83% (7,672 jefes), seguida por el Aymara con el 3.36% (1,129 jefes) y el conjunto de Otras Lenguas Nativas con un 1.67% (560 jefes).
 * Calidad y Consistencia: Se registra una mínima proporción marginal de valores no especificados o perdidos (NA = 0.25%, 83 observaciones), confirmando la solidez de la muestra para el análisis de brechas."
+
+
+#3.4 Tabla de cruce de idioma con nivel educativo-----------------------------
+bivariado_educ_idioma <- jefes_explora %>%
+  tabyl(idioma_factor, educ_factor) %>%
+  adorn_percentages("row") %>%
+  adorn_pct_formatting(digits = 2) %>%
+  adorn_ns()
+
+write_csv(bivariado_educ_idioma, "outputs/Tabla_Bivariado_Cruce_Educacion.csv")
+
+#MEMO 5 EXPLORACIÓN
+
+"* Desigualdad Educativa Intergrupal: Se ejecutó una tabulación bidimensional cruzando identificación lingüística y educación acumulada, evidenciando que las jefaturas de hogar quechua, aymara y de otras lenguas nativas concentran su distribución en la categoría de Sin Educación o Primaria completa/incompleta.
+* Brecha en Educación Superior: Los resultados demuestran una marcada asimetría en el acceso a instrucción técnica o universitaria, donde el grupo hispanohablante triplica la proporción de educación superior en comparación con las jefaturas quechuahablantes y duplica a las de habla aymara.
+* Formateo Relativo: Se utilizaron las funciones de janitor para estimar porcentajes normalizados por fila (row percentages) conservando de forma adyacente las frecuencias absolutas de la muestra, exportando de manera automatizada el archivo Tabla_Bivariado_Cruce_Educacion."
+
