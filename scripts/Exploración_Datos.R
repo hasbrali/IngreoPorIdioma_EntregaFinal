@@ -48,5 +48,19 @@ jefes_explora <- jefes_acondicionada %>%
 * Reestructuración del Capital Humano (Nivel Educativo): Se agrupo la variable nivel_edu vinculando de forma precisa primaria completa (código 4) e incompleta con el umbral base, secundaria completa e incompleta (5 y 6) en el rango medio, y consolidando la instrucción superior junto a los niveles de posgrado (7 al 11).
 * Estandarización de Atributos: Se transformaron las variables categóricas a factores ordenados en R para optimizar las visualizaciones bivariadas, y se recodificó de manera binaria el sexo del jefe de hogar."
 
+#3 Analisis exploratorio bivariado y univariado---------------------------------
 
+#3.1 Idioma materno por ingreso--------------------------------------------------
+bivariado_idioma_ingreso <- jefes_explora %>%
+  group_by(idioma_factor) %>%
+  summarise(
+    Total_Jefes      = n(),
+    Ingreso_Promedio = round(mean(ingreso_bruto, na.rm = TRUE), 2),
+    Ingreso_Mediano  = round(median(ingreso_bruto, na.rm = TRUE), 2)
+  )
+write_csv(bivariado_idioma_ingreso, "outputs/Tabla_Bivariado_Idioma_Ingreso.csv")
 
+#MEMO 2 EXPLORACIÓN
+"* Evidencia del Sesgo Distribucional: Se calculó la asimetría en todas las categorías, demostrando una brecha persistente donde los ingresos promedio superan sustancialmente a las medianas debido a la concentración de valores extremadamente altos.
+* Jerarquización de Ingresos: El reporte confirma que las jefaturas de hogar de habla castellana lideran los ingresos (promedio superior a 34,800 soles), seguidas por las poblaciones aymara y quechua, mientras que el grupo de otras lenguas nativas registra la situación económica más baja de la muestra.
+* Consistencia Muestral: Se documentó la distribución del volumen de jefaturas por adscripción, registrando un volumen minoritario de casos no especificados (NA) que, sin embargo, replican comportamientos de altos ingresos.""
