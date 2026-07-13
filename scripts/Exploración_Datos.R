@@ -66,9 +66,23 @@ write_csv(bivariado_idioma_ingreso, "outputs/Tabla_Bivariado_Idioma_Ingreso.csv"
 * Jerarquización de Ingresos: El reporte confirma que las jefaturas de hogar de habla castellana lideran los ingresos (promedio superior a 34,800 soles), seguidas por las poblaciones aymara y quechua, mientras que el grupo de otras lenguas nativas registra la situación económica más baja de la muestra.
 * Consistencia Muestral: Se documentó la distribución del volumen de jefaturas por adscripción, registrando un volumen minoritario de casos no especificados (NA) que, sin embargo, replican comportamientos de altos ingresos."
 
-# Añadir el archivo a Git
 
-usethis::use_git("outputs/Tabla_Bivariado_Idioma_Ingreso.csv")
+#3.2 Gráfico Univariado---------------------------------------------------------
+#Histograma de la variable continua ingreso bruto.
+grafico_uni_ingreso <- ggplot(jefes_explora, aes(x = ingreso_bruto)) +
+  geom_histogram(fill = "steelblue", color = "white", bins = 40) +
+  scale_x_log10(labels = dollar_format(prefix = "S/. ")) +
+  labs(
+    title = "Distribución Univariada del Ingreso Bruto Mensual (Escala Log10)",
+    subtitle = "Estructura de ingresos en Jefes de Familia (2024)",
+    x = "Ingreso Disponible Mensual del Hogar (Soles)",
+    y = "Frecuencia de Hogares"
+  ) +
+  theme_minimal()
+ggsave("outputs/Grafico_Univariado_Ingreso.png", plot = grafico_uni_ingreso, width = 8, height = 5, bg = "white")
 
-#Subir a GitHub
-usethis::git_push()
+#MEMO 3 EXPLORACIÓN
+"* Transformación de Escala: Se aplicó la función scale_x_log10 para corregir el severo sesgo a la derecha característico de las variables de ingresos, logrando una distribución que se aproxima visualmente a una curva normal (simétrica).
+* Identificación de Concentraciones: El gráfico Grafico_Univariado_Ingreso evidencia que la mayor frecuencia de hogares se agrupa sólidamente en torno a los rangos intermedios de la distribución monetaria (cercanos al umbral de las decenas de miles).
+* FormatO: Se parametrizó el etiquetado estético con símbolos de la moneda nacional (S/.) y se exportó la gráfica final dentro del directorio de outputs del proyecto."
+
