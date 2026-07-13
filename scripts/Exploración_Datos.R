@@ -43,5 +43,10 @@ jefes_explora <- jefes_acondicionada %>%
       TRUE ~ NA_character_
     )
   )
+#MEMO 1 EXPLORACIÓN
+"* Alineación con Diccionario Oficial ENAHO 2024: Se corrigió el mapeo de la variable lengua materna (p300a) para evitar sesgos analíticos anteriores, asignando con precisión el código 4 a Castellano, los códigos 1 y 2 a Quechua y Aymara, e integrando los códigos 3 junto a las desagregaciones de la Amazonía (10 al 15) como Otras Lenguas Nativas.
+* Reestructuración del Capital Humano (Nivel Educativo): Se agrupo la variable nivel_edu vinculando de forma precisa primaria completa (código 4) e incompleta con el umbral base, secundaria completa e incompleta (5 y 6) en el rango medio, y consolidando la instrucción superior junto a los niveles de posgrado (7 al 11).
+* Estandarización de Atributos: Se transformaron las variables categóricas a factores ordenados en R para optimizar las visualizaciones bivariadas, y se recodificó de manera binaria el sexo del jefe de hogar."
+
 
 
